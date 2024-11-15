@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 
-# Функція для отримання математичної функції
+# функція для отримання математичної функції
 def get_user_function(function_str):
     try:
         x = sp.symbols('x')
@@ -17,7 +17,7 @@ def get_user_function(function_str):
         return None, None
 
 
-# Метод бісекції
+# метод бісекції
 def bisection_method(function, interval_start, interval_end, tolerance):
     if function(interval_start) * function(interval_end) >= 0:
         return "Метод бісекції не підходить для даного інтервалу"
@@ -34,7 +34,7 @@ def bisection_method(function, interval_start, interval_end, tolerance):
     return (interval_start + interval_end) / 2
 
 
-# Метод Ньютона
+# метод Ньютона
 def newton_method(function, derivative_function, initial_guess, tolerance):
     current_x = initial_guess
     while True:
@@ -48,7 +48,7 @@ def newton_method(function, derivative_function, initial_guess, tolerance):
         current_x = next_x
 
 
-# Виконання обчислень
+# виконання обчислень
 def calculate_roots():
     function_str = entry_function.get()
     method = method_var.get()
@@ -97,31 +97,31 @@ def calculate_roots():
 
 
 if __name__ == "__main__":
-    # Інтерфейс Tkinter
+    # інтерфейс Tkinter
     root = tk.Tk()
     root.title("Пошук коренів функції")
 
-    # Поле для введення функції
+    # поле для введення функції
     tk.Label(root, text="Введіть функцію f(x):").grid(row=0, column=0)
     entry_function = tk.Entry(root, width=30)
     entry_function.grid(row=0, column=1)
 
-    # Поле для введення точності
+    # поле для введення точності
     tk.Label(root, text="Введіть точність (наприклад, 0.0001):").grid(row=1, column=0)
     entry_tolerance = tk.Entry(root, width=10)
     entry_tolerance.grid(row=1, column=1)
 
-    # Вибір методу
+    # вибір методу
     method_var = tk.StringVar(value="Метод бісекції")
     tk.Label(root, text="Оберіть метод:").grid(row=2, column=0)
     tk.Radiobutton(root, text="Метод бісекції", variable=method_var, value="Метод бісекції").grid(row=2, column=1, sticky="w")
     tk.Radiobutton(root, text="Метод Ньютона", variable=method_var, value="Метод Ньютона").grid(row=3, column=1, sticky="w")
 
-    # Кнопка для запуску обчислень
+    # кнопка для запуску обчислень
     button_calculate = tk.Button(root, text="Обчислити корені", command=calculate_roots)
     button_calculate.grid(row=4, column=0, columnspan=2)
 
-    # Поле для виведення результатів
+    # поле для виведення результатів
     results_text = tk.Text(root, height=15, width=50)
     results_text.grid(row=5, column=0, columnspan=2)
 
